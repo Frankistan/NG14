@@ -1,6 +1,7 @@
 <mat-sidenav-container fxFlexFill>
     <mat-sidenav #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
         <mat-toolbar>Menu</mat-toolbar>
 
         <app-mat-sidenav-list [drawer]="drawer"></app-mat-sidenav-list>
@@ -10,10 +11,7 @@
 
         <app-toolbar [drawer]="drawer"></app-toolbar>
 
-
         <router-outlet></router-outlet>
-
-
 
     </mat-sidenav-content>
 </mat-sidenav-container>

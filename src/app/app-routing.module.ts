@@ -8,6 +8,8 @@ import { ResetPasswordPageComponent } from './pages/auth/reset-password/reset-pa
 import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate, AuthGuard } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-account-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/auth/login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['/posts']);
@@ -20,10 +22,10 @@ const routes: Routes = [
         title: "title.home"
     },
     {
-        path: "address",
-        component: AddressComponent,
+        path: "settings",
+        component: SettingsComponent,
         // canActivate: [AuthGuard],
-        title: "title.home"
+        title: "title.settings"
     },
     {
         path: "auth",
@@ -44,7 +46,13 @@ const routes: Routes = [
                 path: "reset-password",
                 component: ResetPasswordPageComponent,
                 title: 'title.reset_password'
-            }]
+            },
+            {
+                path: "verify-account",
+                component: VerifyAccountPageComponent,
+                title: 'title.verify_account'
+            }
+        ]
     },
     {
         path: 'profile',
