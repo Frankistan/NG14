@@ -1,4 +1,4 @@
-<mat-card fxFlex="75" fxFlex.lt-sm="100">
+<mat-card fxLayout="column" fxFlex="100" fxFlex.sm="60" fxFlex.md="50" fxFlex.lg="40">
 
     <form autocomplete="off" novalidate [formGroup]="form" (submit)="save()">
 
@@ -56,9 +56,9 @@
             <!-- <img *ngIf="imageURL.value" mat-card-image [src]="imageURL.value" class="image-url"> -->
 
             <!-- <ngx-recaptcha2 #captchaElem (expire)="handleExpire()" (load)="handleLoad()" (success)="handleSuccess($event)"
-                [size]="size" [hl]="i18n.language" [theme]="theme" [type]="type" formControlName="recaptcha"
-                name="recaptcha" [siteKey]="siteKey">
-            </ngx-recaptcha2> -->
+                    [size]="size" [hl]="i18n.language" [theme]="theme" [type]="type" formControlName="recaptcha"
+                    name="recaptcha" [siteKey]="siteKey">
+                </ngx-recaptcha2> -->
 
         </mat-card-content>
 

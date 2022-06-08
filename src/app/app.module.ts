@@ -22,6 +22,7 @@ import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-a
 import { LoginPageComponent } from './pages/auth/login/login-page.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './pages/auth/auth.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
@@ -50,6 +51,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         ResetPasswordPageComponent,
         VerifyAccountPageComponent,
         AuthComponent,
+        SettingsComponent,
     ],
     imports: [
         AppRoutingModule,
