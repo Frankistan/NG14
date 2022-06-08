@@ -1,5 +1,45 @@
-<mat-nav-list (click)="close()">
+<!-- <mat-nav-list (click)="close()">
     <a mat-list-item routerLink="/address">Direccion</a>
     <a mat-list-item routerLink="/">Home</a>
     <a mat-list-item href="#">Dummy</a>
+</mat-nav-list> -->
+
+
+<mat-nav-list (click)="close()">
+    <a mat-list-item routerLink="/address">Direccion</a>
+    <a mat-list-item routerLink="/dashboard">Dashboard</a>
+    <a mat-list-item routerLinkActive="active" routerLink="/auth/login">
+        <mat-icon mdListIcon>home</mat-icon>
+        <span>Login</span>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/posts">
+        <mat-icon mdListIcon>home</mat-icon>
+        <span>{{ 'sidenav.wall' | translate }}</span>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/apps">
+        <mat-icon mdListIcon>dashboard</mat-icon>
+        <span>{{ 'sidenav.apps' | translate }}</span>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/posts/create">
+        <mat-icon mdListIcon>insert_drive_file</mat-icon>
+        <span>Create post</span>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/uploads">
+        <mat-icon mdListIcon>upload_file</mat-icon>
+        <span>{{ 'sidenav.uploads' | translate }}</span>
+    </a>
+
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLinkActive="active" routerLink="/settings">
+        <mat-icon mdListIcon>settings</mat-icon>
+        <span>{{ 'sidenav.settings' | translate }}</span>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/help">
+        <mat-icon mdListIcon>help</mat-icon>
+        <span>{{ 'sidenav.help' | translate }}</span>
+    </a>
+    <a mat-list-item (click)="logout()">
+        <mat-icon mdListIcon>power_settings_new</mat-icon>
+        <span>{{ 'sidenav.logout' | translate }}</span>
+    </a>
 </mat-nav-list>

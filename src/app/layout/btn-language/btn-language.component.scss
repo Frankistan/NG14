@@ -1,0 +1,21 @@
+button {
+    padding: 0 4px 0 8px;
+
+    mat-icon {
+        line-height: var(--devsite-select-line-height, 24px);
+    }
+
+    span,
+    mat-icon:first-child {
+        margin: 0 0.25rem;
+    }
+}
+
+
+::ng-deep .mat-menu-panel {
+    width: 8.5rem;
+
+    img {
+        margin-right: 4px;
+    }
+}
