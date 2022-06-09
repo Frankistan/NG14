@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -29,6 +29,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 let MatModules = [
     BrowserAnimationsModule,
@@ -61,6 +62,7 @@ let MatModules = [
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    ScrollingModule,
 ]
 
 
@@ -69,6 +71,7 @@ let MatModules = [
     imports: [
         MatModules
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         {
             provide: MAT_CHIPS_DEFAULT_OPTIONS,

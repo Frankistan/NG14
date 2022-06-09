@@ -22,9 +22,16 @@ import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-a
 import { LoginPageComponent } from './pages/auth/login/login-page.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './pages/auth/auth.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-
-
+import { SettingsPageComponent } from './pages/settings/settings.component';
+import { NotificationService } from './services/notification.service';
+import { PostComponent } from './pages/post/post.component';
+import { MomentModule } from "ngx-moment";
+import { FabCreatePostComponent } from './layout/fab-create-post/fab-create-post.component';
+import { FabEditPostComponent } from './layout/fab-edit-post/fab-edit-post.component';
+import { FabScrollToTopComponent } from './layout/fab-scroll-to-top/fab-scroll-to-top.component';
+import { PostVirtualElementComponent } from './pages/post/post-virtual-list/post-virtual-element/post-virtual-element.component';
+import { PostVirtualListComponent } from './pages/post/post-virtual-list/post-virtual-list.component';
+import { SettingsService } from './services/settings.service';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -51,7 +58,13 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         ResetPasswordPageComponent,
         VerifyAccountPageComponent,
         AuthComponent,
-        SettingsComponent,
+        SettingsPageComponent,
+        PostComponent,
+        FabCreatePostComponent,
+        FabEditPostComponent,
+        FabScrollToTopComponent,
+        PostVirtualElementComponent,
+        PostVirtualListComponent
     ],
     imports: [
         AppRoutingModule,
@@ -62,9 +75,12 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         FlexLayoutModule,
         ReactiveFormsModule,
         TranslateModule.forRoot(),
+        MomentModule,
     ],
     providers: [
         AuthService,
+        NotificationService,
+        SettingsService,
         I18nService,
         {
             provide: TitleStrategy,

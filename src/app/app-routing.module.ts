@@ -8,8 +8,12 @@ import { ResetPasswordPageComponent } from './pages/auth/reset-password/reset-pa
 import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate, AuthGuard } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { SettingsComponent } from './pages/settings/settings.component';
 import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-account-page.component';
+import { SettingsPageComponent } from './pages/settings/settings.component';
+import { PostComponent } from './pages/post/post.component';
+import { PostFormComponent } from './pages/post/post-form/post-form.component';
+import { PostShowComponent } from './pages/post/post-show/post-show.component';
+import { PostVirtualListComponent } from './pages/post/post-virtual-list/post-virtual-list.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/auth/login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['/posts']);
@@ -22,8 +26,38 @@ const routes: Routes = [
         title: "title.home"
     },
     {
+        path: "posts",
+        component: PostComponent,
+        children: [
+            {
+                path: "",
+                component: PostVirtualListComponent,
+                // component: PostListComponent,
+                title: "title.posts.list"
+            },
+            {
+                path: "create",
+                component: PostFormComponent,
+                // canDeactivate: [DiscardChangesGuard],
+                title: "title.posts.create"
+            },
+
+            {
+                path: ":id",
+                component: PostShowComponent,
+                title: "title.posts.show"
+            },
+            {
+                path: ":id/edit",
+                component: PostFormComponent,
+                // canDeactivate: [DiscardChangesGuard],
+                title: "title.posts.edit"
+            }],
+
+    },
+    {
         path: "settings",
-        component: SettingsComponent,
+        component: SettingsPageComponent,
         // canActivate: [AuthGuard],
         title: "title.settings"
     },
@@ -35,27 +69,27 @@ const routes: Routes = [
             {
                 path: "login",
                 component: LoginPageComponent,
-                title: 'title.login'
+                title: "title.login"
             },
             {
                 path: "signup",
                 component: RegisterPageComponent,
-                title: 'title.signup'
+                title: "title.signup"
             },
             {
                 path: "reset-password",
                 component: ResetPasswordPageComponent,
-                title: 'title.reset_password'
+                title: "title.reset_password"
             },
             {
                 path: "verify-account",
                 component: VerifyAccountPageComponent,
-                title: 'title.verify_account'
+                title: "title.verify_account"
             }
         ]
     },
     {
-        path: 'profile',
+        path: "profile",
         canActivate: [AuthGuard],
         component: ProfileComponent,
         title: "title.profile"
@@ -66,7 +100,7 @@ const routes: Routes = [
         pathMatch: "full",
     },
 
-    // { path: '', redirectTo: '/', pathMatch: 'full' },
+    // { path: ", redirectTo: "/", pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,0 +1,22 @@
+<a [routerLink]="['/posts', post.id]" class="post-anchor-element" fxFlex="100" fxFlex.sm="85" fxFlex.gt-sm="75">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+
+            <mat-card-title>
+                <div class="flex-child long-and-truncated">
+                    <span> {{post.title}} </span>
+                </div>
+            </mat-card-title>
+            <mat-card-subtitle>
+                <div class="flex-child long-and-truncated">
+                    <span>
+                        {{ post.created_at * 1000 | amDateFormat: "DD-MM-YYYY HH:mm" }}
+                        | URSULA SEIJAS
+                    </span>
+                </div>
+            </mat-card-subtitle>
+
+        </mat-card-header>
+    </mat-card>
+</a>

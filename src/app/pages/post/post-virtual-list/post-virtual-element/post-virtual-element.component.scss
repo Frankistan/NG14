@@ -1,0 +1,55 @@
+:host {
+    place-content: center !important;
+}
+
+
+
+a.post-anchor-element {
+
+    &:link,
+    &:visited,
+    &:focus,
+    &:active,
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+        color: inherit;
+        width: 100%;
+    }
+
+    mat-card {
+        margin: 0.25rem 0.5rem;
+        width: auto;
+        display: flex;
+        align-self: center;
+
+        .header-image {
+            background-image: url('https://www.smashbros.com/wiiu-3ds/sp/images/character/toon_link/main.png');
+            background-size: cover;
+        }
+
+        mat-card-subtitle {
+            margin: 0;
+
+        }
+
+        .long-and-truncated {
+
+            flex: 1;
+            min-width: 0;
+
+            /* Important for long words! */
+            span {
+
+                display: inline;
+                -webkit-line-clamp: 1; // el "1" signfica el número de líneas visibles antes del ellipsis
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                word-wrap: break-word;
+                /* Important for long words! */
+            }
+        }
+    }
+}

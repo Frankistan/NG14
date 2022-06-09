@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, updateCurrentUser } from '@angular/fire/auth';
-import { addDoc, doc, Firestore } from '@angular/fire/firestore';
-import { FormControl, FormGroup } from '@angular/forms';
-import { IUser } from '@app/models/user';
-import { updateDoc } from 'firebase/firestore';
+import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
+import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +9,7 @@ import { updateDoc } from 'firebase/firestore';
 export class SettingsService {
 
     constructor(
-        private afs: Firestore,
-        private auth: Auth,
+        private _db: Firestore,
     ) { }
 
     get form(): FormGroup {
@@ -24,10 +21,9 @@ export class SettingsService {
 
     }
 
-
     async save(user: any) {
 
-        let docRef = doc(this.afs, `users/${user.uid}`);
+        let docRef = doc(this._db, `users/${user.uid}`);
         await updateDoc(docRef, user);
 
     }
