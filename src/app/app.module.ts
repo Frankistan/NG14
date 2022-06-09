@@ -17,8 +17,8 @@ import { TitleStrategy } from '@angular/router';
 import { TranslateTitleStrategy } from './services/translate-title-strategy';
 import { BtnLanguageComponent } from './layout/btn-language/btn-language.component';
 import { RegisterPageComponent } from './pages/auth/register/register-page.component';
-import { ResetPasswordPageComponent } from './pages/auth/reset-password/reset-password-page.component';
-import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-account-page.component';
+import { ForgotPasswordPageComponent } from './pages/auth/forgot-password/forgot-password-page.component';
+import { VerifyEmailPageComponent } from './pages/auth/verify-email/verify-email-page.component';
 import { LoginPageComponent } from './pages/auth/login/login-page.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './pages/auth/auth.component';
@@ -61,8 +61,8 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         BtnLanguageComponent,
         LoginPageComponent,
         RegisterPageComponent,
-        ResetPasswordPageComponent,
-        VerifyAccountPageComponent,
+        ForgotPasswordPageComponent,
+        VerifyEmailPageComponent,
         AuthComponent,
         SettingsPageComponent,
         FabCreatePostComponent,

@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginPageComponent } from './pages/auth/login/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register/register-page.component';
-import { ResetPasswordPageComponent } from './pages/auth/reset-password/reset-password-page.component';
+import { ForgotPasswordPageComponent } from './pages/auth/forgot-password/forgot-password-page.component';
 import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate, AuthGuard } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { VerifyAccountPageComponent } from './pages/auth/verify-account/verify-account-page.component';
+import { VerifyEmailPageComponent } from './pages/auth/verify-email/verify-email-page.component';
 import { SettingsPageComponent } from './pages/settings/settings.component';
 import { PostComponent } from './pages/post/post.component';
 import { PostFormComponent } from './pages/post/post-form/post-form.component';
@@ -78,13 +78,13 @@ const routes: Routes = [
                 title: "title.signup"
             },
             {
-                path: "reset-password",
-                component: ResetPasswordPageComponent,
+                path: "forgot-password",
+                component: ForgotPasswordPageComponent,
                 title: "title.reset_password"
             },
             {
-                path: "verify-account",
-                component: VerifyAccountPageComponent,
+                path: "verify-email",
+                component: VerifyEmailPageComponent,
                 title: "title.verify_account"
             }
         ]

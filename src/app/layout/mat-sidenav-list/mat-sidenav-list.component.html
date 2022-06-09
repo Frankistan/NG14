@@ -1,4 +1,10 @@
 <mat-nav-list (click)="close()">
+
+    <a mat-list-item routerLinkActive="active" routerLink="/profile">
+        <mat-icon mdListIcon>account_circle</mat-icon>
+        {{ 'title.profile' | translate }}
+    </a>
+
     <a mat-list-item routerLinkActive="active" routerLink="/posts">
         <mat-icon mdListIcon>home</mat-icon>
         {{ 'sidenav.wall' | translate }}
