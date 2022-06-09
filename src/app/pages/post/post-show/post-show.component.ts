@@ -7,7 +7,8 @@ import { AuthService } from '@app/services/auth.service';
 import { I18nService } from '@app/services/i18n.service';
 import { PostService } from '@app/services/post.service';
 import { ProfileService } from '@app/services/profile.service';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -39,15 +40,12 @@ export class PostShowComponent implements OnInit {
         this.isBookMarked$ = this._auth.loggedInUser$.pipe(map((user: IUser) => {
 
             this.user = user;
+            if (this.user.bookmarks == undefined) this.user.bookmarks = [];
             return !!user.bookmarks.find(x => x == this.id);
         }));
     }
 
     bookmark(state: boolean) {
-        console.log("post id: ", this.id);
-
-        console.log("user bookmarks before: ", this.user.bookmarks);
-        console.log("encontrado: ", this.user.bookmarks.findIndex(item => item === this.id));
 
         if (state) {
             this.user.bookmarks.push(this.id);
@@ -55,9 +53,8 @@ export class PostShowComponent implements OnInit {
             if (this.user.bookmarks.findIndex(item => item === this.id) >= 0)
                 this.user.bookmarks.splice(this.user.bookmarks.findIndex(item => item === this.id), 1);
         }
-        console.log("user bookmarks after: ", this.user.bookmarks);
+
         this._auth.bookmarks(this.user.bookmarks);
-        // this._auth.bookmarks();
 
     }
 
