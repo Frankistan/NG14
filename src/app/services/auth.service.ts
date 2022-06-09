@@ -41,8 +41,8 @@ import {
 } from '@angular/fire/firestore';
 import { IUser } from '@app/models/user';
 import { updateDoc } from 'firebase/firestore';
-
-import { catchError, empty, from, map, Observable, of, switchMap, take, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
 
 /*
@@ -55,15 +55,15 @@ https://dev.to/jdgamble555/angular-12-with-firebase-9-49a0
 export class AuthService {
 
     constructor(
-        private _auth: Auth,
-        private _db: Firestore,
+        private auth: Auth,
+        private afs: Firestore,
         private _ntf: NotificationService,
     ) { }
 
     async login(email: string, password: string): Promise<any> {
 
         try {
-            await signInWithEmailAndPassword(this._auth, email, password);
+            await signInWithEmailAndPassword(this.auth, email, password);
             return true;
         } catch (error: any) {
             this.errorHandler(error.code);
@@ -75,7 +75,7 @@ export class AuthService {
 
         try {
             const credential = await createUserWithEmailAndPassword(
-                this._auth,
+                this.auth,
                 user.email,
                 <string>user.password
             );
@@ -106,7 +106,7 @@ export class AuthService {
     async resetPassword(email: string): Promise<any> {
 
         // sends reset password email
-        await sendPasswordResetEmail(this._auth, email);
+        await sendPasswordResetEmail(this.auth, email);
 
     }
 
@@ -114,13 +114,14 @@ export class AuthService {
 
         const provider = new OAuthProvider(p);
         try {
-            const credential = await signInWithPopup(this._auth, provider);
+            const credential = await signInWithPopup(this.auth, provider);
             const additionalInfo: any = getAdditionalUserInfo(credential);
             const fUser = credential.user;
+            let data: any;
 
             if (additionalInfo?.isNewUser) {
 
-                const data: IUser = {
+                data = {
                     uid: fUser.uid,
                     displayName: <string>fUser.displayName,
                     email: <string>fUser.email,
@@ -131,15 +132,19 @@ export class AuthService {
                     providerId: <string>credential.providerId
                 };
 
+                this.saveUserinDB(data);
+
             } else {
-                const data: any = {
+                data = {
                     photoURL: additionalInfo.profile.picture,
                     lastSignInTime: fUser.metadata.lastSignInTime,
                 }
-
-                let docRef = doc(this._db, `users/${fUser.uid}`);
+                let docRef = doc(this.afs, `users/${fUser.uid}`);
                 await updateDoc(docRef, data);
+
             }
+
+
         } catch (error: any) {
             this.errorHandler(error.code);
         }
@@ -147,7 +152,7 @@ export class AuthService {
     }
 
     async logout() {
-        await signOut(this._auth);
+        await signOut(this.auth);
     }
 
     private errorHandler(error: any) {
@@ -157,20 +162,20 @@ export class AuthService {
     }
 
     get loggedInUser$(): Observable<any> {
-        return user(this._auth).pipe(
-            switchMap((user: User | null) => user ? docData(doc(this._db, 'users', user.uid)) as Observable<User | null> : of(null)),
+        return user(this.auth).pipe(
+            switchMap((user: User | null) => user ? docData(doc(this.afs, 'users', user.uid)) as Observable<User | null> : of(null)),
             (tap(user => console.log("Database user: ", user))),
             catchError(this.errorHandler)
         );
     }
 
     get user$(): Observable<User | null> {
-        return user(this._auth).pipe(tap(user => console.log("firebase user: ", user)
+        return user(this.auth).pipe(tap(user => console.log("firebase user: ", user)
         ));
     }
 
     get isAuthenticated$(): Observable<boolean> {
-        return authState(this._auth).pipe(
+        return authState(this.auth).pipe(
             map((user: any) => {
                 if (user && user != undefined) {
                     console.log("authenticated");
@@ -185,13 +190,14 @@ export class AuthService {
     }
 
     private async saveUserinDB(data: any) {
-        let docRef = doc(this._db, `users/${data.uid}`) // create this document newDoc at this path
+
+        let docRef = doc(this.afs, `users/${data.uid}`) // create this document newDoc at this path
         await setDoc(docRef, data);
     }
 
     async bookmarks(bookmarks: Array<string>) {
 
-        const ref = doc(this._db, 'users', this._auth.currentUser.uid);
+        const ref = doc(this.afs, 'users', this.auth.currentUser.uid);
 
         try {
             await updateDoc(ref, { bookmarks });

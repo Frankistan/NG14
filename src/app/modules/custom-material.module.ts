@@ -71,7 +71,7 @@ let MatModules = [
     imports: [
         MatModules
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         {
             provide: MAT_CHIPS_DEFAULT_OPTIONS,
