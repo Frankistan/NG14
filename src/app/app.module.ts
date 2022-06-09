@@ -6,7 +6,7 @@ import { CustomFirebaseModule } from './modules/custom-firebase.module';
 import { CustomMaterialModule } from './modules/custom-material.module';
 import { CustomTinymceModule } from './modules/custom-tinymce.module';
 import { AddressComponent } from './address/address.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSidenavListComponent } from './layout/mat-sidenav-list/mat-sidenav-list.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
@@ -32,6 +32,9 @@ import { FabScrollToTopComponent } from './layout/fab-scroll-to-top/fab-scroll-t
 import { PostVirtualElementComponent } from './pages/post/post-virtual-list/post-virtual-element/post-virtual-element.component';
 import { PostVirtualListComponent } from './pages/post/post-virtual-list/post-virtual-list.component';
 import { SettingsService } from './services/settings.service';
+import { ProfileService } from './services/profile.service';
+import { PostFormComponent } from './pages/post/post-form/post-form.component';
+import { PostShowComponent } from './pages/post/post-show/post-show.component';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -59,12 +62,14 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         VerifyAccountPageComponent,
         AuthComponent,
         SettingsPageComponent,
-        PostComponent,
         FabCreatePostComponent,
         FabEditPostComponent,
         FabScrollToTopComponent,
+        PostComponent,
         PostVirtualElementComponent,
-        PostVirtualListComponent
+        PostVirtualListComponent,
+        PostFormComponent,
+        PostShowComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -74,6 +79,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         CustomTinymceModule,
         FlexLayoutModule,
         ReactiveFormsModule,
+        FormsModule,
         TranslateModule.forRoot(),
         MomentModule,
     ],
@@ -82,6 +88,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         NotificationService,
         SettingsService,
         I18nService,
+        ProfileService,
         {
             provide: TitleStrategy,
             useClass: TranslateTitleStrategy

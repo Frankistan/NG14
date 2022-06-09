@@ -1,1 +1,46 @@
-<p>post-show works!</p>
+<ng-container *ngIf="post$ | async; let post;">
+    <mat-card fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="65">
+        <mat-card-header fxLayout="row" fxLayoutAlign="start start">
+
+            <div mat-card-avatar class="header-image"></div>
+
+            <mat-card-title> {{ post.title }} </mat-card-title>
+
+            <mat-card-subtitle>
+                <time>
+
+                </time>
+            </mat-card-subtitle>
+
+            <span fxFlex></span>
+
+            <ng-container *ngIf="isBookMarked$|async; then: bookMarked; else: notBookMarked"></ng-container>
+
+            <ng-template #bookMarked>
+                <mat-icon class="material-icons" (click)="bookmark(false)">bookmark</mat-icon>
+            </ng-template>
+
+            <ng-template #notBookMarked>
+                <mat-icon class="material-icons-outlined" (click)="bookmark(true)">bookmark_add</mat-icon>
+            </ng-template>
+
+        </mat-card-header>
+
+        <img mat-card-image src="{{post.featured_image}}" alt="featured image">
+
+        <mat-card-content>
+            <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(post.content)"> </span>
+        </mat-card-content>
+
+        <mat-divider [inset]="true"></mat-divider>
+
+        <mat-card-actions align="start">
+            <mat-chip-list>
+                <mat-chip *ngFor="let tag of post.tags">{{ tag }}</mat-chip>
+            </mat-chip-list>
+        </mat-card-actions>
+
+    </mat-card>
+
+    <fab-edit-post *ngIf="post$ | async; let post;" [id]="post.id"></fab-edit-post>
+</ng-container>
