@@ -40,7 +40,7 @@ export class PostShowComponent implements OnInit {
         this.isBookMarked$ = this._auth.loggedInUser$.pipe(map((user: IUser) => {
 
             this.user = user;
-            if (this.user.bookmarks == undefined) this.user.bookmarks = [];
+            // if (this.user.bookmarks == undefined) this.user.bookmarks = [];
             return !!user.bookmarks.find(x => x == this.id);
         }));
     }

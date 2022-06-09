@@ -35,6 +35,7 @@ import { SettingsService } from './services/settings.service';
 import { ProfileService } from './services/profile.service';
 import { PostFormComponent } from './pages/post/post-form/post-form.component';
 import { PostShowComponent } from './pages/post/post-show/post-show.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -72,6 +73,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         PostVirtualListComponent,
         PostFormComponent,
         PostShowComponent,
+        ProfileComponent
     ],
     imports: [
         AppRoutingModule,

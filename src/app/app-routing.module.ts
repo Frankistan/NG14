@@ -22,16 +22,18 @@ const routes: Routes = [
         path: "dashboard",
         component: DashboardComponent,
         // canActivate: [AuthGuard],
-        title: "title.home"
+        title: "title.home",
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
     {
         path: "posts",
         component: PostComponent,
+        canActivate: [],
+        data: { authGuardPipe: redirectUnauthorizedToLogin },
         children: [
             {
                 path: "",
                 component: PostVirtualListComponent,
-                // component: PostListComponent,
                 title: "title.posts.list"
             },
             {
@@ -57,12 +59,14 @@ const routes: Routes = [
     {
         path: "settings",
         component: SettingsPageComponent,
+        data: { authGuardPipe: redirectUnauthorizedToLogin },
         // canActivate: [AuthGuard],
         title: "title.settings"
     },
     {
         path: "auth",
         component: AuthComponent,
+        data: { authGuardPipe: redirectLoggedInToHome },
         // ...canActivate(redirectLoggedInToHome),
         children: [
             {

@@ -66,7 +66,7 @@ export class RegisterPageComponent implements OnInit {
     }
 
     save() {
-        this._auth.signup(this.form.value)
+        this._auth.register(this.form.value)
             .then(_ => {
                 this._ntf.open("toast.signup");
                 this._rtr.navigate(["/posts"]);

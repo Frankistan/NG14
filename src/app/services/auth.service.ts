@@ -19,7 +19,8 @@ import {
     reauthenticateWithPopup,
     authState,
     onAuthStateChanged,
-    updateCurrentUser
+    updateCurrentUser,
+    UserMetadata
 } from '@angular/fire/auth';
 import {
     collection,
@@ -38,9 +39,9 @@ import {
     collectionChanges,
     docSnapshots,
     setDoc,
+    updateDoc,
 } from '@angular/fire/firestore';
 import { IUser } from '@app/models/user';
-import { updateDoc } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
@@ -71,7 +72,9 @@ export class AuthService {
         }
     }
 
-    async signup(user: IUser): Promise<void> {
+    async register(user: any): Promise<void> {
+
+        let data: IUser = new IUser();
 
         try {
             const credential = await createUserWithEmailAndPassword(
@@ -82,14 +85,14 @@ export class AuthService {
 
             let fUser = credential.user;
 
-            const data: IUser = {
+            data = {
+                ...data,
                 uid: fUser.uid,
                 displayName: user.displayName,
                 email: user.email,
-                lastSignInTime: fUser.metadata.lastSignInTime,
-                // lastSignInLocation: this._loc.position,
+                lastLoginAt: fUser.metadata.lastSignInTime,
+                createdAt: fUser.metadata.creationTime,
                 photoURL: user.photoURL,
-                profileURL: "",
                 providerId: fUser.providerData[0].providerId
             };
 
@@ -114,36 +117,39 @@ export class AuthService {
 
         const provider = new OAuthProvider(p);
         try {
+
             const credential = await signInWithPopup(this.auth, provider);
             const additionalInfo: any = getAdditionalUserInfo(credential);
-            const fUser = credential.user;
-            let data: any;
+            const fUser: User = credential.user;
+            let data: IUser = new IUser();
+            let changes: any;
 
             if (additionalInfo?.isNewUser) {
 
                 data = {
+                    ...data,
                     uid: fUser.uid,
                     displayName: <string>fUser.displayName,
                     email: <string>fUser.email,
-                    lastSignInTime: fUser.metadata.lastSignInTime,
-                    // lastSignInLocation: this._loc.position,
+                    lastLoginAt: fUser.metadata.lastSignInTime,
+                    createdAt: fUser.metadata.creationTime,
                     photoURL: <string>fUser.photoURL,
-                    profileURL: "",
                     providerId: <string>credential.providerId
                 };
 
                 this.saveUserinDB(data);
 
             } else {
-                data = {
+                changes = {
+                    // ...data,
                     photoURL: additionalInfo.profile.picture,
                     lastSignInTime: fUser.metadata.lastSignInTime,
                 }
+
                 let docRef = doc(this.afs, `users/${fUser.uid}`);
-                await updateDoc(docRef, data);
+                await updateDoc(docRef, changes);
 
             }
-
 
         } catch (error: any) {
             this.errorHandler(error.code);

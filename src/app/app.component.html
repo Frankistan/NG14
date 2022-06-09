@@ -1,8 +1,13 @@
 <mat-sidenav-container fxFlexFill>
     <mat-sidenav #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(!(isHandset$ | async)) && (isAuthenticated$ | async)">
 
-        <mat-toolbar>Menu</mat-toolbar>
+        <mat-toolbar>
+            <span *ngIf="(user$ |async) as user">
+                <pre> {{user.settings | json}} </pre>
+            </span>
+        </mat-toolbar>
 
         <app-mat-sidenav-list [drawer]="drawer"></app-mat-sidenav-list>
 

@@ -1,18 +1,23 @@
-export interface IUser {
-    uid: string;
-    createdAt?: number;
-    creationTime?: number;
-    displayName?: string;
-    email: string;
-    employeeId?: string;
-    lastSignInTime?: any;
+export class IUser {
     // lastSignInLocation?: google.maps.LatLng;
-    photoURL?: string;
-    password?: string;
-    profileURL?: string;
-    providerId?: string;
-    ps?: string;
-    settings?: any;
-    workPlace?: string;
-    bookmarks?: Array<string>;
+    uid: string = "";
+    bookmarks?: Array<string> = [];
+    createdAt?: string;
+    displayName?: string = "";
+    email: string = "";
+    employeeId?: string = "";
+    lastLoginAt?: string;
+    lastLoginAtLocation?: any;
+    photoURL?: string = "";
+    providerId?: string = "";
+    ps?: string = "";
+    workPlace?: string = "";
+    settings?: {
+        darkTheme: boolean,
+        language: string
+    } = {
+            darkTheme: false,
+            language: ""
+        };
+
 }
