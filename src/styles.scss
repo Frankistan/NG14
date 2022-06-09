@@ -12,8 +12,6 @@ body {
     border: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 
-
-
     mat-card {
         &:not(.virtual-card) {
             margin: 1rem;
@@ -22,6 +20,16 @@ body {
         &.virtual-card {
             margin: 0.5rem 1rem;
 
+        }
+    }
+
+    svg.social-icon {
+        padding-right: 1rem;
+        height: 24px;
+        width: 24px;
+
+        &.no-padding {
+            padding-right: 0;
         }
     }
 }

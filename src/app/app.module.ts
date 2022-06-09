@@ -42,10 +42,12 @@ https://console.firebase.google.com/
 https://openbase.com/
 https://fonts.google.com/icons
 https://material.angular.io/
+https://icons8.com/icon/12599/github
+https://fontawesomeicons.com/svg/icons/google-firebase
+https://www.flaticon.es/packs/google-2
 https://tburleson-layouts-demos.firebaseapp.com/
 https://css2sass.herokuapp.com/
 https://tburleson-layouts-demos.firebaseapp.com/#/docs
-
 */
 
 @NgModule({
