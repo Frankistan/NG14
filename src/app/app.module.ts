@@ -36,6 +36,15 @@ import { ProfileService } from './services/profile.service';
 import { PostFormComponent } from './pages/post/post-form/post-form.component';
 import { PostShowComponent } from './pages/post/post-show/post-show.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { UploadComponent } from './layout/upload/upload.component';
+import { FileUploadService } from './services/file-upload.service';
+import { UploadSelectorComponent } from './layout/upload/upload-selector/upload-selector.component';
+import { CameraComponent } from './layout/upload/camera/camera.component';
+import { ImageEditorComponent } from './layout/upload/image-editor/image-editor.component';
+import { DropzoneComponent } from './layout/dropzone/dropzone.component';
+import { DropzoneDirective } from './directives/dropzone.directive';
+import { WebcamModule } from 'ngx-webcam';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -76,7 +85,14 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         PostVirtualListComponent,
         PostFormComponent,
         PostShowComponent,
-        ProfileComponent
+        ProfileComponent,
+        UploadComponent,
+        UploadSelectorComponent,
+        CameraComponent,
+        ImageEditorComponent,
+        DropzoneComponent,
+        DropzoneDirective,
+
     ],
     imports: [
         AppRoutingModule,
@@ -89,6 +105,8 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         FormsModule,
         TranslateModule.forRoot(),
         MomentModule,
+        ImageCropperModule,
+        WebcamModule,
     ],
     providers: [
         AuthService,
@@ -96,6 +114,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         SettingsService,
         I18nService,
         ProfileService,
+        FileUploadService,
         {
             provide: TitleStrategy,
             useClass: TranslateTitleStrategy

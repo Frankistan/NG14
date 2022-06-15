@@ -13,6 +13,7 @@ import { PostComponent } from './pages/post/post.component';
 import { PostFormComponent } from './pages/post/post-form/post-form.component';
 import { PostShowComponent } from './pages/post/post-show/post-show.component';
 import { PostVirtualListComponent } from './pages/post/post-virtual-list/post-virtual-list.component';
+import { UploadComponent } from './layout/upload/upload.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/auth/login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['/posts']);
@@ -61,6 +62,13 @@ const routes: Routes = [
         ...canActivate(redirectUnauthorizedToLogin),
         // canActivate: [AuthGuard],
         title: "title.settings"
+    },
+    {
+        path: "uploads",
+        component: UploadComponent,
+        ...canActivate(redirectUnauthorizedToLogin),
+        // canActivate: [AuthGuard],
+        title: "title.uploads"
     },
     {
         path: "auth",
