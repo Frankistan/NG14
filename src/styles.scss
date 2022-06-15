@@ -13,9 +13,8 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 
     mat-card {
-        &:not(.virtual-card) {
-            margin: 1rem;
-        }
+        border-radius: 0.5rem !important;
+        margin: 1rem;
 
         &.virtual-card {
             margin: 0.5rem 1rem;

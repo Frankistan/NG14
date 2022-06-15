@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
 
 // * {
 //     box-sizing: border-box;
@@ -18,15 +18,17 @@
 //     flex-wrap: wrap;
 //     padding: 20px;
 // }
+
 mat-card {
+
     height: 36rem;
+
 }
 
-
-.card {
+#profile {
+    height: 36rem;
     max-width: 100%;
-    height: 100%;
-    margin: auto;
+
     overflow-y: auto;
     position: relative;
 
@@ -39,8 +41,8 @@ mat-card {
     box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-.card[data-state="#about"] {
-    height: 100%;
+#profile[data-state="#about"] {
+
     width: 100%;
 
     .card-main {
@@ -48,17 +50,17 @@ mat-card {
     }
 }
 
-.card[data-state="#contact"] {
-    height: 100%;
+#profile[data-state="#contact"] {
+
     width: 100%;
 }
 
-.card[data-state="#experience"] {
-    height: 100%;
+#profile[data-state="#experience"] {
+
     width: 100%;
 }
 
-.card.is-active {
+#profile.is-active {
     .card-header {
         height: 80px;
     }
