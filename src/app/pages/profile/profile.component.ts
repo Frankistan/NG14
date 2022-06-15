@@ -32,10 +32,14 @@ export class ProfileComponent {
         const card = document.querySelector("#profile");
         const targetSection = event.target.getAttribute("data-section");
         const section = document.querySelector(targetSection);
+        const figcaption = document.querySelectorAll("figcaption")[0];
 
         targetSection !== "#about"
             ? card.classList.add("is-active")
             : card.classList.remove("is-active");
+
+        targetSection !== "#about" ? figcaption.classList.add("none") : figcaption.classList.remove("none");
+
         card.setAttribute("data-state", targetSection);
         sections.forEach((s) => s.classList.remove("is-active"));
         buttons.forEach((b) => b.classList.remove("is-active"));
