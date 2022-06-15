@@ -45,6 +45,7 @@ import { DropzoneComponent } from './layout/dropzone/dropzone.component';
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { WebcamModule } from 'ngx-webcam';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { UploadDialogComponent } from './layout/dialogs/upload-dialog/upload-dialog.component';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -92,6 +93,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         ImageEditorComponent,
         DropzoneComponent,
         DropzoneDirective,
+        UploadDialogComponent,
 
     ],
     imports: [
@@ -108,6 +110,7 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         ImageCropperModule,
         WebcamModule,
     ],
+    entryComponents: [UploadDialogComponent],
     providers: [
         AuthService,
         NotificationService,
