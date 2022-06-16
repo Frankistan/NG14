@@ -1,9 +1,9 @@
 mat-card {
     background-color: #202124;
     color: whitesmoke;
-    height: 41.25rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0;
+    // height: 41.25rem;
+    
+
 
     mat-card-header {
         line-height: 1rem;
@@ -14,7 +14,7 @@ mat-card {
     }
 
     mat-card-content {
-        height: calc(100% - 9rem);
+        // height: calc(100% - 9rem);
 
         ::ng-deep mat-tab-group {
             height: 100%;

@@ -5,6 +5,12 @@ import { AuthService } from '@app/services/auth.service';
 import { NotificationService } from '@app/services/notification.service';
 import { PasswordValidator } from '@app/validators/match-password.validator';
 
+/*
+https://youtu.be/F4imGe2HrVs
+https://youtu.be/F4imGe2HrVs?t=429
+
+*/
+
 @Component({
     selector: 'app-register-page',
     templateUrl: './register-page.component.html',

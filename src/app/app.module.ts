@@ -46,6 +46,10 @@ import { DropzoneDirective } from './directives/dropzone.directive';
 import { WebcamModule } from 'ngx-webcam';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UploadDialogComponent } from './layout/dialogs/upload-dialog/upload-dialog.component';
+import { AdDirective } from './directives/ad.directive';
+import { HeroComponent } from './test/hero/hero.component';
+import { VillainComponent } from './test/villain/villain.component';
+import { AdVertComponent } from './test/ad-vert/ad-vert.component';
 
 /*
 https://github.com/Frankistan/ng14fireblog
@@ -94,6 +98,10 @@ https://tburleson-layouts-demos.firebaseapp.com/#/docs
         DropzoneComponent,
         DropzoneDirective,
         UploadDialogComponent,
+        AdDirective,
+        HeroComponent,
+        VillainComponent,
+        AdVertComponent,
 
     ],
     imports: [
