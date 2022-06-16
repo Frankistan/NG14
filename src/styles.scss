@@ -51,16 +51,20 @@ body {
 //     }
 // }
 
-// .custom-mat-dialog-container{
-    
-//     .mat-dialog-container {
-//         padding: 0;
-//         border-radius: 0.5rem;
-//     }
-// }
+.custom-mat-dialog {
 
+    .mat-dialog-container {
+        height: 83vh;
+        padding: 1rem;
+        border-radius: 0.5rem;
 
-// UPLOAD HEIGHT TAB
-mat-dialog-content > .mat-tab-nav-panel  *{
-    height: 300px;
+        .mat-dialog-content {
+            display: block;
+            margin: 0 -1rem;
+            padding: 0 1rem;
+            max-height: 72vh;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
 }

@@ -26,8 +26,7 @@
         line-height: 2rem;
         font-size: 1.5rem;
         letter-spacing: 0;
-        font-weight: 400;
-        color: #e8eaed;
+        font-weight: 200;
         padding-top: 2rem;
     }
 
@@ -36,18 +35,17 @@
         font-size: 1rem;
         letter-spacing: .00625em;
         font-weight: 400;
-        color: #e8eaed;
+        
         padding-bottom: 1rem;
     }
 
 
     button {
-        color: #85ADEF;
-        border-color: #3F4146;
-        margin-bottom: 3rem;
+  
+        margin-bottom: 2rem;
     }
 
-    .hover-state {
+    .hover-state-info {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -55,9 +53,10 @@
         height: 3rem;
         width: 23rem;
         border: 1px solid #4C5053;
-        color: #787B7D;
+    
         border-radius: 0.5rem;
         margin: auto;
+        margin-bottom: 1rem;
         visibility: hidden;
 
         &.visible {

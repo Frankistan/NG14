@@ -58,7 +58,7 @@ export class ProfileComponent implements OnDestroy{
     openDialog(user: IUser) {
         const dialogRef = this.dialog.open(UploadDialogComponent, {
             data: user,
-            panelClass: ['custom-mat-dialog-container'],
+            panelClass: ['custom-mat-dialog'],
             hasBackdrop: true,
             closeOnNavigation: true
         });

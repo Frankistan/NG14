@@ -8,6 +8,7 @@ import { AdComponent } from '@app/models/ad';
 import { AdVertComponent } from '@app/test/ad-vert/ad-vert.component';
 import { HeroComponent } from '@app/test/hero/hero.component';
 import { VillainComponent } from '@app/test/villain/villain.component';
+import { DropzoneComponent } from '@app/layout/dropzone/dropzone.component';
 
 /*
 https://blog.angular-university.io/angular-material-dialog/
@@ -38,7 +39,7 @@ export class UploadDialogComponent implements OnInit, OnDestroy {
 
     tabs: AdItem[] = [
         new AdItem(
-            HeroComponent,
+            DropzoneComponent,
             { icon: "laptop", label: "upload.dialog.pc" }
         ),
         new AdItem(
